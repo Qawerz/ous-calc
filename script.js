@@ -1,14 +1,14 @@
 console.log(200);
 
 data = [
-    ['Пример 1 (требования или конкурент)','ТУ', 'В1','1Д','Н5','М6','Э1','К2',10,50,5],
-    ['21.Kaspersky Endpoint Security версии 11.6.0.394. ','ТУ', 'В5','1В','Н3','М4','Э4','К3',67,10,0],
+    ['Пример 1 (требования или конкурент)','ТУ', 'В1','1Д','Н5','М6','Э1','К2',0,100,10],
+    ['Kaspersky Endpoint Security версии 11.6.0.394. ','ТУ', 'В5','1В','Н3','М4','Э4','К3',67,10,0],
     ['Тест','ТУ', 'В1','0','0','0','0','0',0,100,0],
     
 ]
 
 tbody = document.getElementById('tbody');
-console.log(tbody);
+
 
 const ous0 = function(){
     let ous = 0.0
@@ -143,16 +143,16 @@ const ous0 = function(){
 
     switch(R){
         case 10:
-            console.log(`${R}=10`);
+            
             ous+=0
             break
         case 0:
-            console.log(`${R}=0`);
+            
             ous+=10
             
             break
         default:
-            console.log(`${R}!=10||0`);
+            
             ous+=10/R
             ous+=0.5*(other/10)
             break
@@ -160,7 +160,8 @@ const ous0 = function(){
 
     return ous
 }
-
+function updateTree(){
+tbody.innerHTML = ""
 for (var i = 0; i < data.length; i++) {
     new_item = document.createElement('tr')
     let ous = 0.0
@@ -295,25 +296,67 @@ for (var i = 0; i < data.length; i++) {
 
     switch(R){
         case 10:
-            console.log(`${R}=10`);
+            
             ous+=0
             break
         case 0:
-            console.log(`${R}=0`);
+            
             ous+=10
             
             break
         default:
-            console.log(`${R}!=10||0`);
+            
             ous+=10/R
             ous+=0.5*(other/10)
             break
     }       
         
 
-    console.log(ous0())
     
-    new_item.innerHTML = `<td>${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous.toFixed(2)}</td><td>${(ous/ous0()).toFixed(2)}</td>`
+    new_item.innerHTML = `<td>${i+1}</td><td>${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous.toFixed(2)}</td><td>${(ous/ous0()).toFixed(2)}</td>`
     tbody.appendChild(new_item)
     
+}}
+updateTree()
+
+const inp_name = document.getElementById('inp_name')
+const sel_RDV = document.getElementById('sel_RDV')
+const sel_SVT = document.getElementById('sel_SVT')
+const sel_NSD = document.getElementById('sel_NSD')
+const sel_NDV = document.getElementById('sel_NDV')
+const sel_ME = document.getElementById('sel_ME')
+const sel_ECP = document.getElementById('sel_ECP')
+const sel_PDn = document.getElementById('sel_PDn')
+const inp_Q = document.getElementById('inp_Q')
+const inp_R = document.getElementById('inp_R')
+const inp_oth = document.getElementById('inp_oth')
+const btn_sub = document.getElementById('btn_sub')
+const btn_clr = document.getElementById('btn_clr')
+
+btn_sub.addEventListener('click', () =>{
+    if (inp_name.value){
+        data.push([inp_name.value,sel_RDV.value,sel_SVT.value,sel_NSD.value,sel_NDV.value,sel_ME.value,sel_ECP.value,sel_PDn.value,inp_Q.value,inp_R.value,inp_oth.value])
+        updateTree()
+        clrinp()
+    }else{
+        alert("Введите название!")
+    }
+})
+
+function clrinp(){
+    inp_name.value = ""
+    sel_RDV.value = 0
+    sel_SVT.value = 0
+    sel_NSD.value = 0
+    sel_NDV.value = 0
+    sel_ME.value = 0
+    sel_ECP.value = 0
+    sel_PDn.value = 0
+    inp_Q.value = 0
+    inp_R.value = 0
+    inp_oth.value = 0
 }
+
+btn_clr.addEventListener("click",() =>{
+    clrinp()
+})
