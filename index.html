@@ -8,11 +8,11 @@
     <hr>
     
         <input id='inp_name' ><br>
-        <select id='sel_RDV' name='sel_RDV'>
+        <select id='sel_RDV' name='sel_RDV' title="РДВ">
             <option value="0">0</option>
             <option value="ТУ">ТУ</option>
         </select>
-        <select id='sel_SVT' name='sel_SVT'>
+        <select id='sel_SVT' name='sel_SVT' title='СВТ'>
             <option value="0">0</option>
             <option value="В1">В1</option>
             <option value="В2">В2</option>
@@ -21,7 +21,7 @@
             <option value="В5">В5</option>
             <option value="В6">В6</option>
         </select>
-        <select id='sel_NSD' name='sel_NSD'>
+        <select id='sel_NSD' name='sel_NSD' title='НСД'>
             <option value="0">0</option>
             <option value="1Д">1Д</option>
             <option value="1Г">1Г</option>
@@ -33,7 +33,7 @@
             <option value="3Б">3Б</option>
             <option value="3А">3А</option>
         </select>
-        <select id='sel_NDV' name='sel_NDV'>
+        <select id='sel_NDV' name='sel_NDV' title='НДВ'>
             <option value="0">0</option>
             <option value="Н1">Н1</option>
             <option value="Н2">Н2</option>
@@ -41,7 +41,7 @@
             <option value="Н4">Н4</option>
             <option value="Н5">Н5</option>
         </select>
-        <select id='sel_ME' name='sel_ME'>
+        <select id='sel_ME' name='sel_ME' title='МЭ'>
             <option value="0">0</option>
             <option value="М1">М1</option>
             <option value="М2">М2</option>
@@ -49,7 +49,7 @@
             <option value="М4">М4</option>
             <option value="М5">М5</option>
         </select>
-        <select id='sel_ECP' name='sel_ECP'>
+        <select id='sel_ECP' name='sel_ECP' title='ЭЦП'>
             <option value="0">0</option>
             <option value="Э1">Э1</option>
             <option value="Э2">Э2</option>
@@ -57,36 +57,36 @@
             <option value="Э4">Э4</option>
             <option value="Э5">Э5</option>
         </select>
-        <select id='sel_PDn' name='sel_PDn'>
+        <select id='sel_PDn' name='sel_PDn' title='ПДн'>
             <option value="0">0</option>
             <option value="К1">К1</option>
             <option value="К2">К2</option>
             <option value="К3">К3</option>
         </select>
-        <input id="inp_Q" value=0>
-        <input id="inp_R" value=0>
-        <input id="inp_oth" value=0>
+        <input id="inp_Q" value=0 title='Q'>
+        <input id="inp_R" value=0 title='R'>
+        <input id="inp_oth" value=0 title='Другое'>
         <button id="btn_sub">Добавить</button>
         <button type="submit" id="btn_clr">Отчистить</button>
         
     <hr>
-    <table>
+    <table class="table_blur">
         <thead>
-            <td>№</td>
-            <td>Шифр объекта анализа</td>
-            <td>РДВ (ТУ)</td>
-            <td>СВТ</td>
-            <td>НСД</td>
-            <td>НДВ</td>
-            <td>МЭ</td>
-            <td>ЭЦП</td>
-            <td>ПДн</td>
-            <td>Q</td>
-            <td>R</td>
-            <td>Другие</td>
-            <td>ОУС</td>
-            <td>КП</td>
-            <tbody></tbody>
+            <th>№</th>
+            <th>Шифр объекта анализа</th>
+            <th>РДВ (ТУ)</th>
+            <th>СВТ</th>
+            <th>НСД</th>
+            <th>НДВ</th>
+            <th>МЭ</th>
+            <th>ЭЦП</th>
+            <th>ПДн</th>
+            <th>Q</th>
+            <th>R</th>
+            <th>Другие</th>
+            <th>ОУС</th>
+            <th>КП</th>
+            <th></th>
         </thead>
 
         <tbody id='tbody'>

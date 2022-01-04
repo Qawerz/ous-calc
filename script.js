@@ -1,6 +1,6 @@
 console.log(`${200} - OK`)
 
-data = [
+var data = [
 	["Пример 1 (требования или конкурент)","ТУ","В1","1Д","Н5","М6","Э1","К2",0,100,10],
 	["Kaspersky Endpoint Security версии 11.6.0.394. ","ТУ","В5","1В","Н3","М4","Э4","К3",67,10,0],
 	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
@@ -157,21 +157,23 @@ function updateTree() {
 	tbody.innerHTML = ""
 	for (var i = 0; i < data.length; i++) {
 		new_item = document.createElement("tr")
+        new_item.id = `sz${i+1}`
+
 		let ous_ = ous(data[i])
 		let name = data[i][0]
-		let RDV = data[i][1]
-		let SVT = data[i][2]
-		let NSD = data[i][3]
-		let NDV = data[i][4]
-		let ME = data[i][5]
-		let ECP = data[i][6]
-		let PDn = data[i][7]
-		let Q = data[i][8]
-		let R = data[i][9]
-		let other = data[i][10]
+        let RDV = data[i][1]
+        let SVT = data[i][2]
+        let NSD = data[i][3]
+        let NDV = data[i][4]
+        let ME = data[i][5]
+        let ECP = data[i][6]
+        let PDn = data[i][7]
+        let Q = data[i][8]
+        let R = data[i][9]
+        let other = data[i][10]
 	
 
-		new_item.innerHTML = `<td>${i + 1}</td><td>${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous_.toFixed(2)}</td><td>${(ous_ / ous(data[0])).toFixed(2)}</td>`
+		new_item.innerHTML = `<td>${i+1}</td><td>${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous_.toFixed(2)}</td><td>${(ous_ / ous(data[0])).toFixed(2)}</td><td class='del' onclick="deltd(${i+1})">&times</td>`
 		tbody.appendChild(new_item)
 	}
 }
@@ -230,3 +232,12 @@ function clrinp() {
 btn_clr.addEventListener("click", () => {
 	clrinp()
 })
+
+function deltd(index){
+    console.log(index);
+    let td = document.getElementById(`sz${index}`)
+    if(confirm('Вы уверенны?')){
+        data.splice(index-1, 1)
+        updateTree()
+    }
+}
