@@ -1,8 +1,24 @@
-console.log(`${200} - OK`)
+
+
+const inp_name = document.getElementById("inp_name")
+const sel_RDV = document.getElementById("sel_RDV")
+const sel_SVT = document.getElementById("sel_SVT")
+const sel_NSD = document.getElementById("sel_NSD")
+const sel_NDV = document.getElementById("sel_NDV")
+const sel_ME = document.getElementById("sel_ME")
+const sel_ECP = document.getElementById("sel_ECP")
+const sel_PDn = document.getElementById("sel_PDn")
+const inp_Q = document.getElementById("inp_Q")
+const inp_R = document.getElementById("inp_R")
+const inp_oth = document.getElementById("inp_oth")
+const btn_sub = document.getElementById("btn_sub")
+const btn_clr = document.getElementById("btn_clr")
+
+
 
 var data = [
-	[
-		"Пример 1 (требования или конкурент)",
+    [
+        "Пример 1 (требования или конкурент)",
 		"ТУ",
 		"В1",
 		"1Д",
@@ -28,6 +44,30 @@ var data = [
 		0,
 	],
 	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+]
+var userdata = [
+	...data
 ]
 
 tbody = document.getElementById("tbody")
@@ -182,7 +222,6 @@ function updateTree() {
 	for (var i = 0; i < data.length; i++) {
 		new_item = document.createElement("tr")
 		new_item.id = `sz${i + 1}`
-
 		let ous_ = ous(data[i])
 		let name = data[i][0]
 		let RDV = data[i][1]
@@ -198,9 +237,35 @@ function updateTree() {
 
 		new_item.innerHTML = `<td>${
 			i + 1
-		}</td><td class="td__name">${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous_.toFixed(
+		}</td><td class="td__name">${name}</td><td>${RDV}</td><td class="td__SVT">${SVT}</td><td class="td__NSD">${NSD}</td><td class="td__NDV">${NDV}</td><td class="td__ME">${ME}</td><td class="td__ECP">${ECP}</td><td class="td__PDn">${PDn}</td><td class="td__Q">${Q}</td><td class="td__R">${R}</td><td class="td__other">${other}</td><td>${ous_.toFixed(
 			2
-		)}</td><td>${(ous_ / ous(data[0])).toFixed(
+		)}</td><td>${(ous_ / ous(userdata[0])).toFixed(
+			2
+		)}</td><td class='del' onclick="deltd(${i + 1})">&times</td>`
+		tbody.appendChild(new_item)
+	}
+	for (var i = data.length; i < userdata.length; i++) {
+		new_item = document.createElement("tr")
+		new_item.classList.add('useradded')
+		new_item.id = `sz${i + 1}`
+		let ous_ = ous(userdata[i])
+		let name = userdata[i][0]
+		let RDV = userdata[i][1]
+		let SVT = userdata[i][2]
+		let NSD = userdata[i][3]
+		let NDV = userdata[i][4]
+		let ME = userdata[i][5]
+		let ECP = userdata[i][6]
+		let PDn = userdata[i][7]
+		let Q = userdata[i][8]
+		let R = userdata[i][9]
+		let other = userdata[i][10]
+
+		new_item.innerHTML = `<td>${
+			i + 1
+		}</td><td class="td__name">${name}</td><td>${RDV}</td><td class="td__SVT">${SVT}</td><td class="td__NSD">${NSD}</td><td class="td__NDV">${NDV}</td><td class="td__ME">${ME}</td><td class="td__ECP">${ECP}</td><td class="td__PDn">${PDn}</td><td class="td__Q">${Q}</td><td class="td__R">${R}</td><td class="td__other">${other}</td><td>${ous_.toFixed(
+			2
+		)}</td><td>${(ous_ / ous(userdata[0])).toFixed(
 			2
 		)}</td><td class='del' onclick="deltd(${i + 1})">&times</td>`
 		tbody.appendChild(new_item)
@@ -208,23 +273,11 @@ function updateTree() {
 }
 updateTree()
 
-const inp_name = document.getElementById("inp_name")
-const sel_RDV = document.getElementById("sel_RDV")
-const sel_SVT = document.getElementById("sel_SVT")
-const sel_NSD = document.getElementById("sel_NSD")
-const sel_NDV = document.getElementById("sel_NDV")
-const sel_ME = document.getElementById("sel_ME")
-const sel_ECP = document.getElementById("sel_ECP")
-const sel_PDn = document.getElementById("sel_PDn")
-const inp_Q = document.getElementById("inp_Q")
-const inp_R = document.getElementById("inp_R")
-const inp_oth = document.getElementById("inp_oth")
-const btn_sub = document.getElementById("btn_sub")
-const btn_clr = document.getElementById("btn_clr")
+
 
 btn_sub.addEventListener("click", () => {
 	if (inp_name.value) {
-		data.push([
+		userdata.push([
 			inp_name.value,
 			sel_RDV.value,
 			sel_SVT.value,
@@ -238,7 +291,7 @@ btn_sub.addEventListener("click", () => {
 			Number(inp_oth.value),
 		])
 		updateTree()
-		clrinp()
+		closeModal()
 	} else {
 		alert("Введите название!")
 	}
@@ -258,12 +311,27 @@ function clrinp() {
 	inp_oth.value = 0
 }
 
-btn_clr.addEventListener("click", () => {
-	clrinp()
-})
+// btn_clr.addEventListener("click", () => {
+// 	clrinp()
+// })
+
+function refresh() {
+	document.querySelectorAll('th').forEach(th => th.classList.remove('th-sort-asc', 'th-sort-desc'))
+	document.querySelector('#search').value = ''
+	document.querySelector('#filter_SVT').value = ''
+	document.querySelector('#filter_NSD').value = ''
+	document.querySelector('#filter_NDV').value = ''
+	document.querySelector('#filter_ME').value = ''
+	document.querySelector('#filter_ECP').value = ''
+	document.querySelector('#filter_PDn').value = ''
+	document.querySelector('#filter_Q').value = ''
+	document.querySelector('#filter_R').value = ''
+	document.querySelector('#filter_other').value = ''
+	document.querySelector('#filter_useradded').checked = false
+	updateTree()
+}
 
 function deltd(index) {
-	console.log(index)
 	let td = document.getElementById(`sz${index}`)
 	if (confirm("Вы уверенны?")) {
 		data.splice(index - 1, 1)
@@ -277,6 +345,176 @@ document.querySelector("#search").oninput = function(){
     if (val != ''){
         items.forEach(function(element){
             if(element.querySelector('.td__name').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_SVT").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__SVT').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_NSD").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__NSD').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_NDV").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__NDV').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_ME").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__ME').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_ECP").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__ECP').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_PDn").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__PDn').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_Q").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__Q').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_R").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__R').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+function filter_uadd(){
+	let val = document.querySelector("#filter_useradded")
+    let items = document.querySelectorAll('#tbody tr')
+    if (val.checked){
+        items.forEach(function(element){
+            if (!element.classList.contains("useradded")){
+				element.classList.add("hide")
+			}else{
+				element.classList.remove("hide")
+			}
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
+    }
+}
+document.querySelector("#filter_other").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__other').innerText.toLowerCase().search(val) == -1){
                 element.classList.add('hide')
             }else{
                 element.classList.remove('hide')
@@ -325,3 +563,30 @@ document.querySelectorAll('.table th').forEach(handlerCell =>{
     })
 })
 
+/// Модальное окно
+function showCover(){
+	let coverDiv = document.createElement('div');
+    coverDiv.id = 'cover-div';
+	document.body.style.overflowY = 'hidden';
+    document.body.append(coverDiv);
+}
+
+function hideCover() {
+	document.getElementById('cover-div').remove();
+	document.body.style.overflowY = '';
+}
+
+function showModal() {
+	showCover()
+	let container = document.getElementById('modal');
+
+	container.style.display = 'flex';
+	document.getElementById('inp_name').focus();
+}
+
+function closeModal(){
+	hideCover()
+	clrinp()
+	let container = document.getElementById('modal');
+	container.style.display = 'none';
+}
