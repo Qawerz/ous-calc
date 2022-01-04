@@ -68,13 +68,20 @@
         <input id="inp_oth" value=0 title='Другое'>
         <button id="btn_sub">Добавить</button>
         <button type="submit" id="btn_clr">Отчистить</button>
+
+        <input
+        autocomplete="off"
+        type="search"
+        id="search"
+        placeholder="Поиск..."
+        />
         
     <hr>
-    <table class="table_blur">
+    <table class="table">
         <thead>
-            <th>№</th>
+            <th class="th-sort-asc">№</th>
             <th>Шифр объекта анализа</th>
-            <th>РДВ (ТУ)</th>
+            <th class="no-sort">РДВ (ТУ)</th>
             <th>СВТ</th>
             <th>НСД</th>
             <th>НДВ</th>
@@ -86,7 +93,7 @@
             <th>Другие</th>
             <th>ОУС</th>
             <th>КП</th>
-            <th></th>
+            <th class="no-sort"></th>
         </thead>
 
         <tbody id='tbody'>

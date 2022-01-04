@@ -1,8 +1,32 @@
 console.log(`${200} - OK`)
 
 var data = [
-	["Пример 1 (требования или конкурент)","ТУ","В1","1Д","Н5","М6","Э1","К2",0,100,10],
-	["Kaspersky Endpoint Security версии 11.6.0.394. ","ТУ","В5","1В","Н3","М4","Э4","К3",67,10,0],
+	[
+		"Пример 1 (требования или конкурент)",
+		"ТУ",
+		"В1",
+		"1Д",
+		"Н5",
+		"М6",
+		"Э1",
+		"К2",
+		0,
+		100,
+		10,
+	],
+	[
+		"Kaspersky Endpoint Security версии 11.6.0.394. ",
+		"ТУ",
+		"В5",
+		"1В",
+		"Н3",
+		"М4",
+		"Э4",
+		"К3",
+		67,
+		10,
+		0,
+	],
 	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
 ]
 
@@ -157,23 +181,28 @@ function updateTree() {
 	tbody.innerHTML = ""
 	for (var i = 0; i < data.length; i++) {
 		new_item = document.createElement("tr")
-        new_item.id = `sz${i+1}`
+		new_item.id = `sz${i + 1}`
 
 		let ous_ = ous(data[i])
 		let name = data[i][0]
-        let RDV = data[i][1]
-        let SVT = data[i][2]
-        let NSD = data[i][3]
-        let NDV = data[i][4]
-        let ME = data[i][5]
-        let ECP = data[i][6]
-        let PDn = data[i][7]
-        let Q = data[i][8]
-        let R = data[i][9]
-        let other = data[i][10]
-	
+		let RDV = data[i][1]
+		let SVT = data[i][2]
+		let NSD = data[i][3]
+		let NDV = data[i][4]
+		let ME = data[i][5]
+		let ECP = data[i][6]
+		let PDn = data[i][7]
+		let Q = data[i][8]
+		let R = data[i][9]
+		let other = data[i][10]
 
-		new_item.innerHTML = `<td>${i+1}</td><td>${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous_.toFixed(2)}</td><td>${(ous_ / ous(data[0])).toFixed(2)}</td><td class='del' onclick="deltd(${i+1})">&times</td>`
+		new_item.innerHTML = `<td>${
+			i + 1
+		}</td><td class="td__name">${name}</td><td>${RDV}</td><td>${SVT}</td><td>${NSD}</td><td>${NDV}</td><td>${ME}</td><td>${ECP}</td><td>${PDn}</td><td>${Q}</td><td>${R}</td><td>${other}</td><td>${ous_.toFixed(
+			2
+		)}</td><td>${(ous_ / ous(data[0])).toFixed(
+			2
+		)}</td><td class='del' onclick="deltd(${i + 1})">&times</td>`
 		tbody.appendChild(new_item)
 	}
 }
@@ -233,11 +262,66 @@ btn_clr.addEventListener("click", () => {
 	clrinp()
 })
 
-function deltd(index){
-    console.log(index);
-    let td = document.getElementById(`sz${index}`)
-    if(confirm('Вы уверенны?')){
-        data.splice(index-1, 1)
-        updateTree()
+function deltd(index) {
+	console.log(index)
+	let td = document.getElementById(`sz${index}`)
+	if (confirm("Вы уверенны?")) {
+		data.splice(index - 1, 1)
+		updateTree()
+	}
+}
+
+document.querySelector("#search").oninput = function(){
+    let val = this.value.trim();
+    let items = document.querySelectorAll('#tbody tr')
+    if (val != ''){
+        items.forEach(function(element){
+            if(element.querySelector('.td__name').innerText.toLowerCase().search(val) == -1){
+                element.classList.add('hide')
+            }else{
+                element.classList.remove('hide')
+            }
+        })
+    }else{
+        items.forEach(function(element){
+            element.classList.remove('hide')
+        })
     }
 }
+
+
+function sortTable(table, column, asc = true){
+    const dirMode = asc ? 1 : -1
+    const tBody = table.tBodies[0]
+    const rows = Array.from(tbody.querySelectorAll('tr'))
+    
+    const sortedRows = rows.sort((a, b) =>{
+        const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim()
+        const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim()
+
+        return aColText > bColText ? (1 * dirMode) : (-1 * dirMode)
+    })
+
+    while (tBody.firstChild) {
+        tBody.removeChild(tBody.firstChild)
+    }
+
+    tBody.append(...sortedRows)
+
+    table.querySelectorAll('th').forEach(th => th.classList.remove('th-sort-asc', 'th-sort-desc'))
+    table.querySelector(`th:nth-child(${column + 1 })`).classList.toggle('th-sort-asc', asc)
+    table.querySelector(`th:nth-child(${column + 1 })`).classList.toggle('th-sort-desc', !asc)
+}
+
+document.querySelectorAll('.table th').forEach(handlerCell =>{
+    handlerCell.addEventListener('click', ()=>{
+        if (!handlerCell.classList.contains("no-sort")){
+            const tableElement = handlerCell.parentElement.parentElement.parentElement
+            const handlerIndex = Array.prototype.indexOf.call(handlerCell.parentElement.children, handlerCell)
+            const currentIsAscending = handlerCell.classList.contains('th-sort-asc')
+            sortTable(tableElement, handlerIndex, !currentIsAscending)
+        }
+            
+    })
+})
+
