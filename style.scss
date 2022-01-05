@@ -182,6 +182,7 @@ body{
 aside{
     background-color: $primary;
     border-right: 1px solid $border;
+    user-select:none;
 
     >h1{
         text-align: center;
