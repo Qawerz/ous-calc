@@ -340,7 +340,7 @@ function deltd(index) {
 }
 
 document.querySelector("#search").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -556,8 +556,8 @@ document.querySelectorAll('.table th').forEach(handlerCell =>{
         if (!handlerCell.classList.contains("no-sort")){
             const tableElement = handlerCell.parentElement.parentElement.parentElement
             const handlerIndex = Array.prototype.indexOf.call(handlerCell.parentElement.children, handlerCell)
-            const currentIsAscending = handlerCell.classList.contains('th-sort-asc')
-            sortTable(tableElement, handlerIndex, !currentIsAscending)
+            const currentIsAscending = handlerCell.classList.contains('th-sort-desc')
+            sortTable(tableElement, handlerIndex, currentIsAscending)
         }
             
     })
@@ -590,3 +590,27 @@ function closeModal(){
 	let container = document.getElementById('modal');
 	container.style.display = 'none';
 }
+
+function toggleFilter(){
+	let btn = document.getElementById('open_filter')
+	if (btn.classList.contains('open')){
+		btn.classList.remove('open');
+		btn.classList.add('close')
+		document.querySelector('.filter__group').classList.add('hide')
+	}else{
+		btn.classList.add('open');
+		btn.classList.remove('close')
+		document.querySelector('.filter__group').classList.remove('hide')
+	}
+	
+}
+
+const tab_btns = document.querySelectorAll("#tabs_btn_list li")
+
+tab_btns.forEach(btn=> {
+	btn.addEventListener("click", ()=>{
+		window.location.href = btn.getAttribute('href')
+		btn.parentNode.querySelectorAll('li').forEach(btn => btn.classList.remove('active'))
+		btn.classList.add('active')
+	})
+})

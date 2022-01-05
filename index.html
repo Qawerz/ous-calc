@@ -7,22 +7,28 @@
     <div class="container">
         <aside>
             <h1>Калькулятор ОУС</h1>
+            <ul id='tabs_btn_list'>
+                <li class="active" href="#table">Таблица</li>
+                <li href="#tab__content-2">Вкладка 2</li>
+            </ul>
         </aside>
         
-        <main>
-            <div style="display: flex; flex-direction:row; justify-content: space-between">
+        <main id='table'>
+            <div style="display: flex; flex-direction:row; justify-content: space-between; margin-bottom: 30px">
                 <input
                 autocomplete="off"
                 type="search"
                 id="search"
                 placeholder="Поиск..."
                 />
-                <button id="open_modal" onclick="showModal('Добавить СЗИ')">Добавить</button>
+                <div>
+                    <button id="open_filter" class="close"onclick="toggleFilter()">Фильтр</button>
+                    <button id="open_modal" onclick="showModal()">+ Добавить</button>
+                </div>
             </div>
             
-            <details class="filter" open>
-                <summary>Фильтр</summary>
-                <div>
+            
+                <div class="filter__group hide">
                     <input id="filter_SVT" placeholder="СВТ">
                     <input id="filter_NSD" placeholder="НСД">
                     <input id="filter_NDV" placeholder="НДВ">
@@ -38,7 +44,6 @@
                     </div>
                     
                 </div>
-            </details>
             
             <div id="modal">
                 <div id="modalForm">
@@ -176,6 +181,7 @@
             </tbody>
         </table>
         </main>
+        <!-- <main id='content-2'></main> -->
     </div>
 </body>
 <script src="script.js"></script>
