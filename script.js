@@ -1,4 +1,4 @@
-
+onload = () => window.location.href = `#table`
 
 const inp_name = document.getElementById("inp_name")
 const sel_RDV = document.getElementById("sel_RDV")
@@ -15,8 +15,8 @@ const btn_sub = document.getElementById("btn_sub")
 const btn_clr = document.getElementById("btn_clr")
 
 
-
-var data = [
+var data = []
+var bd = [
     [
         "Пример 1 (требования или конкурент)",
 		"ТУ",
@@ -28,8 +28,7 @@ var data = [
 		"К2",
 		0,
 		100,
-		10,
-	],
+		10,],
 	[
 		"Kaspersky Endpoint Security версии 11.6.0.394. ",
 		"ТУ",
@@ -43,32 +42,23 @@ var data = [
 		10,
 		0,
 	],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест1", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест2", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест3", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест4", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	["Тест5", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
 ]
 var userdata = [
-	...data
+	["user", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
 ]
+
+function updatedata() {
+	// console.log(data);
+	var new_data = []
+	new_data.push(...bd)
+	new_data.push(...userdata)
+	data = new_data
+}
 
 tbody = document.getElementById("tbody")
 function ous(data) {
@@ -217,9 +207,11 @@ function ous(data) {
 	return ous
 }
 function updateTree() {
+	updatedata()
 	console.log("updating...")
 	tbody.innerHTML = ""
-	for (var i = 0; i < data.length; i++) {
+	for (var i = 0; i < bd.length; i++) {
+		// console.log(data[i]);
 		new_item = document.createElement("tr")
 		new_item.id = `sz${i + 1}`
 		let ous_ = ous(data[i])
@@ -239,35 +231,36 @@ function updateTree() {
 			i + 1
 		}</td><td class="td__name">${name}</td><td>${RDV}</td><td class="td__SVT">${SVT}</td><td class="td__NSD">${NSD}</td><td class="td__NDV">${NDV}</td><td class="td__ME">${ME}</td><td class="td__ECP">${ECP}</td><td class="td__PDn">${PDn}</td><td class="td__Q">${Q}</td><td class="td__R">${R}</td><td class="td__other">${other}</td><td>${ous_.toFixed(
 			2
-		)}</td><td>${(ous_ / ous(userdata[0])).toFixed(
+		)}</td><td>${(ous_ / ous(data[0])).toFixed(
 			2
-		)}</td><td class='del' onclick="deltd(${i + 1})">&times</td>`
+		)}</td><td class='del' onclick="deltd(${i+1})">&times</td>`
 		tbody.appendChild(new_item)
 	}
-	for (var i = data.length; i < userdata.length; i++) {
+	for (var i = bd.length; i < bd.length+userdata.length; i++) {
+		// console.log(data[i]);
 		new_item = document.createElement("tr")
 		new_item.classList.add('useradded')
 		new_item.id = `sz${i + 1}`
-		let ous_ = ous(userdata[i])
-		let name = userdata[i][0]
-		let RDV = userdata[i][1]
-		let SVT = userdata[i][2]
-		let NSD = userdata[i][3]
-		let NDV = userdata[i][4]
-		let ME = userdata[i][5]
-		let ECP = userdata[i][6]
-		let PDn = userdata[i][7]
-		let Q = userdata[i][8]
-		let R = userdata[i][9]
-		let other = userdata[i][10]
+		let ous_ = ous(data[i])
+		let name = data[i][0]
+		let RDV = data[i][1]
+		let SVT = data[i][2]
+		let NSD = data[i][3]
+		let NDV = data[i][4]
+		let ME = data[i][5]
+		let ECP = data[i][6]
+		let PDn = data[i][7]
+		let Q = data[i][8]
+		let R = data[i][9]
+		let other = data[i][10]
 
 		new_item.innerHTML = `<td>${
 			i + 1
 		}</td><td class="td__name">${name}</td><td>${RDV}</td><td class="td__SVT">${SVT}</td><td class="td__NSD">${NSD}</td><td class="td__NDV">${NDV}</td><td class="td__ME">${ME}</td><td class="td__ECP">${ECP}</td><td class="td__PDn">${PDn}</td><td class="td__Q">${Q}</td><td class="td__R">${R}</td><td class="td__other">${other}</td><td>${ous_.toFixed(
 			2
-		)}</td><td>${(ous_ / ous(userdata[0])).toFixed(
+		)}</td><td>${(ous_ / ous(data[0])).toFixed(
 			2
-		)}</td><td class='del' onclick="deltd(${i + 1})">&times</td>`
+		)}</td><td class='del' onclick="deltd(${i+1})">&times</td>`
 		tbody.appendChild(new_item)
 	}
 }
@@ -290,6 +283,7 @@ btn_sub.addEventListener("click", () => {
 			Number(inp_R.value),
 			Number(inp_oth.value),
 		])
+		
 		updateTree()
 		closeModal()
 	} else {
@@ -332,9 +326,16 @@ function refresh() {
 }
 
 function deltd(index) {
-	let td = document.getElementById(`sz${index}`)
+	let tr = document.getElementById(`sz${index}`)
+	const tr_p = tr.parentNode
+	console.log(index);
 	if (confirm("Вы уверенны?")) {
-		data.splice(index - 1, 1)
+		if(tr.classList.contains('useradded')){
+			userdata.splice(index-bd.length-1,1)
+			console.log(userdata);
+		}else{
+			bd.splice(index-1,1)
+		}
 		updateTree()
 	}
 }
