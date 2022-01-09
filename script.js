@@ -525,7 +525,7 @@ var bd = [
 	]
 ]
 var userdata = [
-
+	...JSON.parse(window.localStorage.getItem('userdata'))
 ]
 
 function updatedata() {
@@ -762,6 +762,9 @@ btn_sub.addEventListener("click", () => {
 		
 		updateTree()
 		closeModal()
+		
+		
+		window.localStorage.setItem('userdata', JSON.stringify(userdata))
 	} else {
 		alert("Введите название!")
 	}
@@ -809,10 +812,12 @@ function deltd(index) {
 		if(tr.classList.contains('useradded')){
 			userdata.splice(index-bd.length-1,1)
 			console.log(userdata);
+			window.localStorage.setItem('userdata', JSON.stringify(userdata))
 		}else{
 			bd.splice(index-1,1)
 		}
 		updateTree()
+		
 	}
 }
 
@@ -1142,6 +1147,8 @@ if (name){
 	])
 	
 	updateTree()
+	
+	window.localStorage.setItem('userdata', JSON.stringify(userdata))
 }
 
 }
