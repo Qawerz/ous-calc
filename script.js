@@ -525,8 +525,9 @@ var bd = [
 	]
 ]
 if(JSON.parse(window.localStorage.getItem('userdata'))){
+	const _ud = JSON.parse(window.localStorage.getItem('userdata'))
 	userdata = [
-		...JSON.parse(window.localStorage.getItem('userdata'))
+		..._ud
 	]
 }
 function updatedata() {
