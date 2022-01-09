@@ -524,10 +524,11 @@ var bd = [
 		0,
 	]
 ]
-var userdata = [
-	...JSON.parse(window.localStorage.getItem('userdata'))
-]
-
+if(JSON.parse(window.localStorage.getItem('userdata'))){
+	userdata = [
+		...JSON.parse(window.localStorage.getItem('userdata'))
+	]
+}
 function updatedata() {
 	// console.log(data);
 	var new_data = []
