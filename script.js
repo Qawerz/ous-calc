@@ -1,4 +1,4 @@
-onload = () => window.location.href = `#table`
+onload = () => window.location.href = `#calc`
 
 const inp_name = document.getElementById("inp_name")
 const sel_RDV = document.getElementById("sel_RDV")
@@ -42,14 +42,490 @@ var bd = [
 		10,
 		0,
 	],
-	["Тест1", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест2", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест3", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест4", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
-	["Тест5", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+	[
+		"Программный комплекс Межсетевой экран с системой обнаружения вторжений Ideco UTM",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М4",
+		"0",
+		"0",
+		0,
+		15,
+		4,
+	],
+	[
+		"Программно-аппаратный комплекс ViPNet xFirewall 5",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М4",
+		"0",
+		"0",
+		0,
+		0,
+		4,
+	],
+	[
+		"Межсетевой экран «Mail.Ru Cloud Firewall»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М6",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Операционная система «SUSE Linux Enterprise Server for SAP Applications 15 SP3»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		6,
+	],
+	[
+		"Комплекс безопасности «Континент». Версия 4.",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М4",
+		"0",
+		"0",
+		0,
+		0,
+		4,
+	],
+	[
+		"Специальное программное обеспечение средств защиты информации от несанкционированного доступа «Аккорд-Win64 K»",
+		"ТУ",
+		"В5",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		4,
+	],
+	[
+		"Соната-РС3", 
+		"ТУ",
+		"0", 
+		"0", 
+		"0", 
+		"0", 
+		"0", 
+		"0", 
+		0, 
+		0, 
+		0
+	],
+	[
+		"Программное обеспечение «Avanpost FAM»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Прикладное программное обеспечение «PostgreSQL Sber Edition»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программно-аппаратный комплекс аутентификации, управления доступом и безопасного хранения информации и персональных данных пользователей, ключевой носитель ФОРОС 2",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Защита виртуальных рабочих столов ТИОНИКС»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Система контроля каналов передачи конфиденциальной информации Falcongaze SecureTower»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		6,
+	],
+	[
+		"Программное обеспечение «Единый портал государственных и муниципальных услуг»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Совокупность подсистем единого окна цифровой обратной связи государственной информационной системы «Единый портал государственных и муниципальных услуг (функций)» версия 1",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Специализированное программное обеспечение «Тобол-ТВ» ЦКДИ.00047-03",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программный комплекс «С-Терра Клиент». Версия 4.3",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М4",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Автоматизированная информационная система Общегородская платформа совместных вычислений на агрегированных данных»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"«Компонент защиты информации Пергамент»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программно-аппаратный комплекс однонаправленной передачи данных Numa uGate",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Изделие «ViPNet SafePoint»",
+		"ТУ",
+		"В5",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		4,
+	],
+	[
+		"Directum RX", 
+		"ТУ", 
+		"0", 
+		"0", 
+		"0", 
+		"0", 
+		"0", 
+		"0", 
+		0, 
+		0, 
+		0
+	],
+	[
+		"Специальное программное обеспечение «Водопад-НЧР»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Система контроля действий поставщиков ИТ-услуг (СКДПУ)",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Прикладное программное обеспечение «Облачная платформа Сбербанка»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Информационно-поисковая система Сервис ИСОД МВД России «Незаконный оборот наркотиков»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программно-аппаратный комплекс «FortiGate» для защиты промышленной сети",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М6",
+		"0",
+		"0",
+		0,
+		0,
+		10,
+	],
+	[
+		"Модуль защиты информации «Skillaz»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «WebGard 2.0»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программный комплекс Solar Dozor версии 7",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Модуль управления системы «Активный гражданин»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное изделие «Kaspersky Unified Monitoring and Analysis Platform (версия 1.5)»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программное обеспечение «Модуль управления Автоматизированной информационной системы «Электронный дом»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Фильтр электромагнитных излучений технических средств «ФИЛЬТР ФЭМИ-01»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Межсетевой экран ESR-20, версия программного обеспечения 1.5",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"М4",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Специальное программное обеспечение средств защиты информации от несанкционированного доступа «Аккорд-Х К»",
+		"ТУ",
+		"В5",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Средство аутентификации и безопасного хранения информации пользователей JaCarta",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	],
+	[
+		"Программный комплекс «Гарда БД»",
+		"ТУ",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		"0",
+		0,
+		0,
+		0,
+	]
 ]
 var userdata = [
-	["user", "ТУ", "В1", "0", "0", "0", "0", "0", 0, 100, 0],
+
 ]
 
 function updatedata() {
@@ -358,7 +834,7 @@ document.querySelector("#search").oninput = function(){
     }
 }
 document.querySelector("#filter_SVT").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -375,7 +851,7 @@ document.querySelector("#filter_SVT").oninput = function(){
     }
 }
 document.querySelector("#filter_NSD").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -392,7 +868,7 @@ document.querySelector("#filter_NSD").oninput = function(){
     }
 }
 document.querySelector("#filter_NDV").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -409,7 +885,7 @@ document.querySelector("#filter_NDV").oninput = function(){
     }
 }
 document.querySelector("#filter_ME").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -426,7 +902,7 @@ document.querySelector("#filter_ME").oninput = function(){
     }
 }
 document.querySelector("#filter_ECP").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -443,7 +919,7 @@ document.querySelector("#filter_ECP").oninput = function(){
     }
 }
 document.querySelector("#filter_PDn").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -460,7 +936,7 @@ document.querySelector("#filter_PDn").oninput = function(){
     }
 }
 document.querySelector("#filter_Q").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -477,7 +953,7 @@ document.querySelector("#filter_Q").oninput = function(){
     }
 }
 document.querySelector("#filter_R").oninput = function(){
-    let val = this.value.trim();
+    let val = this.value.trim().toLowerCase();
     let items = document.querySelectorAll('#tbody tr')
     if (val != ''){
         items.forEach(function(element){
@@ -615,3 +1091,57 @@ tab_btns.forEach(btn=> {
 		btn.classList.add('active')
 	})
 })
+
+
+function calcnowous(){
+	const nowous = document.getElementById("nowous")
+	const sel_RDV = document.getElementById("calc_sel_RDV")
+	const sel_SVT = document.getElementById("calc_sel_SVT")
+	const sel_NSD = document.getElementById("calc_sel_NSD")
+	const sel_NDV = document.getElementById("calc_sel_NDV")
+	const sel_ME = document.getElementById("calc_sel_ME")
+	const sel_ECP = document.getElementById("calc_sel_ECP")
+	const sel_PDn = document.getElementById("calc_sel_PDn")
+	const inp_Q = document.getElementById("calc_inp_Q")
+	const inp_R = document.getElementById("calc_inp_R")
+	const inp_oth = document.getElementById("calc_inp_oth")
+
+	// console.log(sel_RDV, sel_SVT, sel_NSD,sel_NDV,sel_ME,sel_ECP,sel_PDn);
+	nowous.innerText = ous(['_', sel_RDV.value, sel_SVT.value, sel_NSD.value,sel_NDV.value,sel_ME.value,sel_ECP.value,sel_PDn.value, Number(inp_Q.value),Number(inp_R.value),Number(inp_oth.value)]).toFixed(2)
+}
+calcnowous()
+
+
+function addtotable(){
+	const sel_RDV = document.getElementById("calc_sel_RDV")
+	const sel_SVT = document.getElementById("calc_sel_SVT")
+	const sel_NSD = document.getElementById("calc_sel_NSD")
+	const sel_NDV = document.getElementById("calc_sel_NDV")
+	const sel_ME = document.getElementById("calc_sel_ME")
+	const sel_ECP = document.getElementById("calc_sel_ECP")
+	const sel_PDn = document.getElementById("calc_sel_PDn")
+	const inp_Q = document.getElementById("calc_inp_Q")
+	const inp_R = document.getElementById("calc_inp_R")
+	const inp_oth = document.getElementById("calc_inp_oth")
+
+	const name = prompt('Введите название')
+
+if (name){
+	userdata.push([
+		name,
+		sel_RDV.value,
+		sel_SVT.value,
+		sel_NSD.value,
+		sel_NDV.value,
+		sel_ME.value,
+		sel_ECP.value,
+		sel_PDn.value,
+		Number(inp_Q.value),
+		Number(inp_R.value),
+		Number(inp_oth.value),
+	])
+	
+	updateTree()
+}
+
+}

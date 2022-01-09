@@ -8,12 +8,13 @@
         <aside>
             <h1>Калькулятор ОУС</h1>
             <ul id='tabs_btn_list'>
-                <li href="#tab__content-2">Калькулятор</li>
-                <li class="active" href="#table">Таблица</li>
+                <li class="active" href="#calc">Калькулятор</li>
+                <li  href="#table">Таблица</li>
             </ul>
         </aside>
         
         <main id='table'>
+            <div>
             <div style="display: flex; flex-direction:row; justify-content: space-between; margin-bottom: 30px">
                 <input
                 autocomplete="off"
@@ -35,9 +36,9 @@
                     <input id="filter_ME" placeholder="МЭ">
                     <input id="filter_ECP" placeholder="ЭЦП">
                     <input id="filter_PDn" placeholder="ПДн">
-                    <input id="filter_Q" placeholder="Q">
-                    <input id="filter_R" placeholder="R">
-                    <input id="filter_other" placeholder="Другое">
+                    <input id="filter_Q" autocomplete='off' type="number" placeholder="0"  placeholder="Q">
+                    <input id="filter_R"  autocomplete='off' type="number" placeholder="0"  placeholder="R">
+                    <input id="filter_other" autocomplete='off' type="number" placeholder="0"  placeholder="Другое">
                     <div style="margin: auto 0; margin-left: 5px;">
                         <input id="filter_useradded" type="checkbox" onchange="filter_uadd()">
                         <label for="filter_useradded">От пользователя</label>
@@ -136,15 +137,15 @@
                     <div>
                         <div>
                             <label for="inp_name">Q</label>
-                            <input id="inp_Q" value=0 title='Q'>
+                            <input id="inp_Q" autocomplete='off' type="number" placeholder="0" value=0 title='Q'>
                         </div>
                         <div>
                             <label for="inp_name">R</label>
-                            <input id="inp_R" value=0 title='R'>
+                            <input id="inp_R" autocomplete='off' type="number" placeholder="0" value=0 title='R'>
                         </div>
                         <div>
                             <label for="inp_name">Другое</label>
-                            <input id="inp_oth" value=0 title='Другое'>
+                            <input id="inp_oth" autocomplete='off' type="number" placeholder="0" value=0 title='Другое'>
                         </div>
                     </div>
                     
@@ -175,14 +176,342 @@
                 <th>ОУС</th>
                 <th>КП</th>
                 <th class="no-sort refresh" onclick="refresh()">&#10227</th>
-            </thead>
     
             <tbody id='tbody'>
             </tbody>
         </table>
+        </div>
+        </main>
+        <main id="calc">
+            <div style="display:grid; grid-template-columns: 1fr 2fr">
+                <div>
+                    <!-- <div>
+                        <label for="inp_name">Шифр объекта анализа</label>
+                        <input id='inp_name' >
+                    </div> -->
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr);">
+                        <div>
+                            <label for="calc_sel_RDV">РДВ(ТУ)</label>
+                            <select id='calc_sel_RDV' name='sel_RDV' value=0 onchange="calcnowous()" title="РДВ">
+                                <option value="0">0</option>
+                                <option value="ТУ">ТУ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="calc_sel_SVT">СВТ</label>
+                            <select id='calc_sel_SVT' name='sel_SVT' value=0 onchange="calcnowous()" title='СВТ'>
+                                <option value="0">0</option>
+                                <option value="В1">В1</option>
+                                <option value="В2">В2</option>
+                                <option value="В3">В3</option>
+                                <option value="В4">В4</option>
+                                <option value="В5">В5</option>
+                                <option value="В6">В6</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="calc_sel_NSD">НСД</label>
+                            <select id='calc_sel_NSD' onchange="calcnowous()" value=0 name='sel_NSD' title='НСД'>
+                                <option value="0">0</option>
+                                <option value="1Д">1Д</option>
+                                <option value="1Г">1Г</option>
+                                <option value="1В">1В</option>
+                                <option value="1Б">1В</option>
+                                <option value="1А">1А</option>
+                                <option value="2Б">2Б</option>
+                                <option value="2А">2А</option>
+                                <option value="3Б">3Б</option>
+                                <option value="3А">3А</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="calc_sel_NDV">НДВ</label>
+                            <select id='calc_sel_NDV' onchange="calcnowous()" value=0 name='sel_NDV' title='НДВ'>
+                                <option value="0">0</option>
+                                <option value="Н1">Н1</option>
+                                <option value="Н2">Н2</option>
+                                <option value="Н3">Н3</option>
+                                <option value="Н4">Н4</option>
+                                <option value="Н5">Н5</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="calc_sel_ME">МЭ</label>
+                            <select id='calc_sel_ME' onchange="calcnowous()" value=0 name='sel_ME' title='МЭ'>
+                                <option value="0">0</option>
+                                <option value="М1">М1</option>
+                                <option value="М2">М2</option>
+                                <option value="М3">М3</option>
+                                <option value="М4">М4</option>
+                                <option value="М5">М5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="calc_sel_ECP">ЭЦП</label>
+                            <select id='calc_sel_ECP' onchange="calcnowous()" value=0 name='sel_ECP' title='ЭЦП'>
+                                <option value="0">0</option>
+                                <option value="Э1">Э1</option>
+                                <option value="Э2">Э2</option>
+                                <option value="Э3">Э3</option>
+                                <option value="Э4">Э4</option>
+                                <option value="Э5">Э5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="calc_sel_PDn">ПДн</label>
+                            <select id='calc_sel_PDn' onchange="calcnowous()" value=0 name='sel_PDn' title='ПДн'>
+                                <option value="0">0</option>
+                                <option value="К1">К1</option>
+                                <option value="К2">К2</option>
+                                <option value="К3">К3</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                    <div style="display: flex;flex-direction: column;align-items: center; margin-top: 20px;">
+                        <div>
+                            <label for="calc_inp_Q">Q</label>
+                            <input id="calc_inp_Q" oninput="calcnowous()" autocomplete='off' type="number" placeholder="0" value=0 title='Q'>
+                        </div>
+                        <div>
+                            <label for="calc_inp_R">R</label>
+                            <input id="calc_inp_R" oninput="calcnowous()" autocomplete='off' type="number" placeholder="0" value=0 title='R'>
+                        </div>
+                        <div>
+                            <label for="calc_inp_oth">Другое</label>
+                            <input id="calc_inp_oth" oninput="calcnowous()" autocomplete='off' type="number" placeholder="0" value=0 title='Другое'>
+                    
+                    
+                    
+                    
+                        <!-- <div>
+                            <input id="btn_sub" type="submit" value="Ok">
+                            <input id="btn_clr" type="button" name="cancel" value="Отмена" onclick="closeModal()">
+                        </div> -->
+                    
+                        
+                    </div>
+                    
+                    </div>
+                    <div style="margin-top: 50px;display:flex; justify-content: space-between ">
+                        <span style="font-size:25px;">Текуший ОУС составляет <span id="nowous">20202</span></span><button style="margin-right: 15px"id="open_modal" onclick="addtotable()">+ Добавить</button>
+                    </div>
+                </div>
+            
+                    
+            
+                <table>
+                    <tbody>
+                        <tr blue b>
+                            <td blue>Гриф данных</td>
+                            <td colspan="2">Только для ...</td>
+                            <td colspan="2">Для Р</td>
+                            <td>ОВ</td>
+                            <td>СС</td>
+                            <td>С</td>
+                            <td>К</td>
+                            <td>ОдИ</td>
+                        </tr>
+                        <tr>
+                            <td>Класс по ТУ</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Да</td>
+                            <td>Нет</td>
+                        </tr>
+                        <tr red>
+                            <td>Уту</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Класс по СВТ</td>
+                            <td >В1</td>
+                            <td >В1</td>
+                            <td >В1</td>
+                            <td >В1</td>
+                            <td >В2</td>
+                            <td >В3</td>
+                            <td >В4</td>
+                            <td >В5</td>
+                            <td >В6</td>
+                        </tr>
+                        <tr red>
+                            <td>Усвт</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>0,50</td>
+                            <td>0,33</td>
+                            <td>0,25</td>
+                            <td>0,20</td>
+                            <td>0,17</td>
+                        </tr>
+                        <tr>
+                            <td>Класс по НСД</td>
+                            <td >3А</td>
+                            <td >3Б</td>
+                            <td >2А</td>
+                            <td >2Б</td>
+                            <td >1А</td>
+                            <td >1Б</td>
+                            <td >1В</td>
+                            <td >1Г</td>
+                            <td >1Д</td>
+                        </tr>
+                        <tr red>
+                            <td>Унсд</td>
+                            <td>4,00</td>
+                            <td>3,50</td>
+                            <td>3,00</td>
+                            <td>2,50</td>
+                            <td>2,00</td>
+                            <td>1,50</td>
+                            <td>1,30</td>
+                            <td>1,25</td>
+                            <td>1,20</td>
+                        </tr>
+                        <tr>
+                            <td>Класс по НДВ</td>
+                            <td >Н1</td>
+                            <td >Н1</td>
+                            <td >Н1</td>
+                            <td >Н1</td>
+                            <td >Н1</td>
+                            <td >Н2</td>
+                            <td >Н3</td>
+                            <td >Н4</td>
+                            <td >Н5</td>
+                        </tr>
+                        <tr red>
+                            <td>Ундв</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>0,50</td>
+                            <td>0,33</td>
+                            <td>0,25</td>
+                            <td>0,20</td>
+                        </tr>
+                        <tr>
+                            <td>Класс по МЭ</td>
+                            <td >М1</td>
+                            <td >М1</td>
+                            <td >М1</td>
+                            <td >М1</td>
+                            <td >М2</td>
+                            <td >М3</td>
+                            <td >М4</td>
+                            <td >М5</td>
+                            <td > - </td>
+                        </tr>
+                        <tr red>
+                            <td>Умэ</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>0,50</td>
+                            <td>0,33</td>
+                            <td>0,25</td>
+                            <td>0,20</td>
+                            <td> - </td>
+                        </tr>
+                        <tr>
+                            <td>Класс по ПДн</td>
+                            <td >К1</td>
+                            <td >К1</td>
+                            <td >К1</td>
+                            <td >К1</td>
+                            <td >К1</td>
+                            <td >К2</td>
+                            <td >К3</td>
+                            <td >К4</td>
+                            <td > - </td>
+                        </tr>
+                        <tr red>
+                            <td>Упдн</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>1,00</td>
+                            <td>0,50</td>
+                            <td>0,33</td>
+                            <td>0,25</td>
+                            <td> - </td>
+                        </tr>
+                        <tr>
+                            <td>Класс по Q</td>
+                            <td >Q9</td>
+                            <td >Q8</td>
+                            <td >Q7</td>
+                            <td >Q6</td>
+                            <td >Q5</td>
+                            <td >Q4</td>
+                            <td >Q3</td>
+                            <td >Q2</td>
+                            <td >Q1</td>
+                        </tr>
+                        <tr red>
+                            <td>Уq</td>
+                            <td>9</td>
+                            <td>8</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Класс по R</td>
+                            <td >R1</td>
+                            <td >R2</td>
+                            <td >R3</td>
+                            <td >R4</td>
+                            <td >R5</td>
+                            <td >R6</td>
+                            <td >R7</td>
+                            <td >R8</td>
+                            <td >R9</td>
+                        </tr>
+                        <tr red>
+                            <td>Уr</td>
+                            <td>1</td>
+                            <td>1/2</td>
+                            <td>1/3</td>
+                            <td>1/4</td>
+                            <td>1/5</td>
+                            <td>1/6</td>
+                            <td>1/7</td>
+                            <td>1/8</td>
+                            <td>1/9</td>
+                        </tr>
+                    </tbody>
+                </table>
         </main>
         <!-- <main id='content-2'></main> -->
-    </div>
+    
 </body>
 <script src="script.js"></script>
 </html>

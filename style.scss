@@ -34,13 +34,17 @@ body{
 }
 
 
-
+#table{
+    >div{
+        max-width: 1600px;
+    }
 .table {
 	width: 100%;
 	text-align: left;
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0 10px;
+    
     
 
 	th {
@@ -177,8 +181,9 @@ body{
 .refresh{
     cursor: pointer!important;
     text-align:center;
+    overflow: hidden;
 }
-
+}
 aside{
     background-color: $primary;
     border-right: 1px solid $border;
@@ -320,6 +325,12 @@ main{
         background-color: #39393955;
         color: $text;
         text-transform: uppercase;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
     }
 }
 
@@ -411,6 +422,12 @@ main{
         border: none;
         background-color: #39393955;
         color: $text;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
     }
 
     select{
@@ -455,5 +472,105 @@ main{
         text-shadow: 1px 1px 1px black;
     }
 }
+
+
+#calc{
+    >div{
+        max-width: 1600px;
+    }
+    input{
+        margin: 3px;
+        padding: 5px 10px;
+        font-size: 20px;
+        box-shadow: 0 1px 0 rgba(250,250,250,0.3);
+        border-radius: 5px;
+        border: none;
+        background-color: #39393955;
+        color: $text;
+        
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        
+    }
+    >div{
+        border: 1px solid $border;
+        background-color: $primary;
+        padding: 30px 30px;
+        border-radius: 10px;
+    }
+    select{
+        font-size: 20px;
+        box-shadow: 0 1px 0 rgba(250,250,250,0.3);
+        border-radius: 5px;
+        border: none;
+        background-color: #39393955;
+        color: $text;
+        width: 50px;
+
+        option{
+            background-color: #39393955;
+            color: black;
+        }
+    }
+
+    #nowous{
+        text-decoration: underline;
+    }
+    table{
+        width: 100%;
+        border-collapse:collapse;
+        border-spacing:0;
+        height: auto;
+        text-align: center;
+        
+        
+        &, td, th{
+            border: 1px solid $border;
+            
+        }
+
+        
+        [blue]{
+            color: #55f;
+        }
+        [red]{
+            color: #f55;
+        }
+        
+        [green]{
+            color: #5f5
+        }
+        
+        [b]{
+            font-weight: bold;
+        }
+    
+        
+
+
+        tr:nth-child(odd){
+            background-color: #333;
+        }
+        tr:nth-child(even){
+            background-color: #222;
+        }
+
+        td, th{
+            padding: 3px;
+            width: 30px;
+            height: 35px;
+        }
+        th{
+            background: #347c99; 
+            color: #fff; 
+            font-weight: normal;
+        }
+        }
+    
+}
+
 
 
