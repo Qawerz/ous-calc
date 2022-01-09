@@ -524,6 +524,8 @@ var bd = [
 		0,
 	]
 ]
+
+const userdata = []
 if(JSON.parse(window.localStorage.getItem('userdata'))){
 	const _ud = JSON.parse(window.localStorage.getItem('userdata'))
 	userdata = [
