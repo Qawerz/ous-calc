@@ -1156,3 +1156,48 @@ if (name){
 }
 
 }
+
+
+function screenshot(){
+	const canvas = document.createElement('canvas')
+	const ctx = canvas.getContext('2d')
+	
+	const sel_RDV = document.getElementById("calc_sel_RDV")
+	const sel_SVT = document.getElementById("calc_sel_SVT")
+	const sel_NSD = document.getElementById("calc_sel_NSD")
+	const sel_NDV = document.getElementById("calc_sel_NDV")
+	const sel_ME = document.getElementById("calc_sel_ME")
+	const sel_ECP = document.getElementById("calc_sel_ECP")
+	const sel_PDn = document.getElementById("calc_sel_PDn")
+	const inp_Q = document.getElementById("calc_inp_Q")
+	const inp_R = document.getElementById("calc_inp_R")
+	const inp_oth = document.getElementById("calc_inp_oth")
+
+	ctx.beginPath()
+	ctx.fillStyle = `#000`
+	ctx.rect(0, 0, 1000, 1000)
+	ctx.fill()
+	ctx.fillStyle ='#fff'
+	ctx.font = '20px arial'
+	ctx.fillText(`РДВ(ТУ) - ${sel_RDV.value}`, 20, 20)
+	ctx.fillText(`СВТ - ${sel_SVT.value}`, 20, 40)
+	ctx.fillText(`НСД - ${sel_NSD.value}`, 20, 60)
+	ctx.fillText(`НДВ - ${sel_NDV.value}`, 20, 80)
+	ctx.fillText(`МЭ - ${sel_ME.value}`, 20, 100)
+	ctx.fillText(`ЭЦП - ${sel_ECP.value}`, 150, 20)
+	ctx.fillText(`ПДн - ${sel_PDn.value}`, 150, 40)
+	ctx.fillText(`Q - ${inp_Q.value}`, 150, 60)
+	ctx.fillText(`R - ${inp_R.value}`, 150, 80)
+	ctx.fillText(`Другое - ${inp_oth.value}`, 150, 100)
+	ctx.fillText(`ОУС - ${ous(['_', sel_RDV.value, sel_SVT.value, sel_NSD.value,sel_NDV.value,sel_ME.value,sel_ECP.value,sel_PDn.value, Number(inp_Q.value),Number(inp_R.value),Number(inp_oth.value)]).toFixed(2)}`, 100, 140)
+	
+	var link = document.createElement('a');
+	link.download = 'filename.jpg';
+	link.href = canvas.toDataURL()
+	link.click();
+	
+	
+	ctx.closePath()
+
+
+}
